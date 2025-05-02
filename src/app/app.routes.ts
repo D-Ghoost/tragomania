@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './domains/home/pages/home/home.component';
-import { ListComponent } from './domains/cocktails/pages/list/list.component';
+import { SearchComponent } from './domains/search/pages/search/search.component';
+
 
 export const routes: Routes = [
     {
@@ -9,10 +10,10 @@ export const routes: Routes = [
     },
     {
         path: 'search',
-        component: ListComponent
+        component: SearchComponent
     },
     {
-        path: 'no-alcohol',
-        component: ListComponent
+        path: 'search/:query',
+        component: SearchComponent
     }
 ];

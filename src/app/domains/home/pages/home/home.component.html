@@ -1,63 +1,50 @@
-<nav class="w-full p-4 flex justify-between border-b border-gray-700">
-    <div class="text-center">
-      <h1 class="text-xl font-light italic">TRAGOMANIA</h1>
-    </div>
-    <div class="flex justify-center">
-      <ul class="flex gap-6 text-sm">
-        <li class="hover:text-gray-300 cursor-pointer">
-            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-                Home
-            </a>
-        </li>
-        <li class="hover:text-gray-300 cursor-pointer">
-            <a routerLink="search" ariaCurrentWhenActive="page">
-                Search
-            </a>
-        </li>
-        <li class="hover:text-gray-300 cursor-pointer">
-            <a routerLink="no-alcohol" ariaCurrentWhenActive="page">
-                Non-Alcoholic
-            </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+
   
-  <main class="flex-1 p-6 flex flex-col items-center h-full">
+
     <div class="text-center mb-12 mt-6">
       <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-2">TRAGOMANIA</h1>
       <h2 class="text-lg font-light italic">Find your next drink</h2>
     </div>
   
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mb-12">
-      <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
+      <a routerLink="search" [queryParams]="{ c : 'Cocktail' }" ariaCurrentWhenActive="page">
+        <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
         <lucide-angular [img]="Martini" class="mb-3 h-8 w-8" />
-        <h2 class="text-center">Cocktails</h2>
+        <h2 class="text-center">
+            Cocktails
+        </h2>
       </div>
-      <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
-        <lucide-angular [img]="Beer" class="mb-3 h-8 w-8" />
-        <h2 class="text-center">Ordinary Drinks</h2>
-      </div>
-      <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
-        <lucide-angular [img]="WineOff" class="mb-3 h-8 w-8" />
-        <h2 class="text-center">Non-Alcoholic</h2>
-      </div>
+      </a>
+
+      <a routerLink="search" [queryParams]="{ c : 'Ordinary_Drink' }" ariaCurrentWhenActive="page">
+        <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
+            <lucide-angular [img]="Beer" class="mb-3 h-8 w-8" />
+            <h2 class="text-center">
+                Ordinary Drinks
+            </h2>
+        </div>
+      </a>
+
+      <a routerLink="search" [queryParams]="{ a : 'Non_Alcoholic' }" ariaCurrentWhenActive="page">
+        <div class="border border-gray-600 rounded-3xl p-6 flex flex-col items-center justify-center h-36 hover:border-white transition-colors">
+            <lucide-angular [img]="WineOff" class="mb-3 h-8 w-8" />
+            <h2 class="text-center">
+                Non-Alcoholic
+            </h2>
+        </div>
+      </a>
     </section>
   
-    <section class="w-full h-auto max-w-2xl md:max-w-xl mb-12">
+    <section class="w-full max-w-4xl mb-12">
       <div class="overflow-x-auto pb-6 scrollbar-hide">
         <ul class="flex space-x-5 snap-x snap-mandatory scroll-pl-6 scroll-pr-6">
-            <app-cocktail *ngFor="let cocktail of cocktail()" 
-            [name]="cocktail.strDrink" 
-            [imgUrl]="cocktail.strDrinkThumb" 
-            [alt]="cocktail.strDrink" 
-            additionalClass="snap-center snap-always w-xs pt-4"/>
+                <app-cocktail *ngFor="let cocktail of cocktail()" 
+                [name]="cocktail.strDrink" 
+                [imgUrl]="cocktail.strDrinkThumb" 
+                [alt]="cocktail.strDrink" 
+                additionalClass="snap-center snap-always w-xs pt-4"/>
         </ul>
       </div>
     </section>
-  </main>
+
   
-  <footer class="w-full py-4 border-t border-gray-700 text-center">
-    <h3 class="text-sm text-gray-400 mb-1">Dev by D-Ghoost</h3>
-    <h3 class="text-sm text-gray-400">Api by thecocktaildb</h3>
-  </footer>
