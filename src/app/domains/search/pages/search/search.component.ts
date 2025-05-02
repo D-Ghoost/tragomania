@@ -15,8 +15,8 @@ import { CocktailComponent } from "../../../cocktails/components/cocktail/cockta
 })
 export class SearchComponent {
   
-
     readonly Search = Search;
+    drinkName : string = ''; 
 
     cocktail = signal<Cocktail[]>([]);
     queryToLink : string | null = null;
@@ -47,6 +47,11 @@ export class SearchComponent {
         }
       })
 
+    }
+
+    drinkHandler( event : KeyboardEvent ) : void{
+      const input = event.target as HTMLInputElement;
+      this.drinkName = input.value;
     }
 
     ngOnDestroy() : void{

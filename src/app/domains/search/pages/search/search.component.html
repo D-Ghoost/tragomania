@@ -12,6 +12,8 @@
         <input
           type="text"
           placeholder="Search by drink name or ingredient..."
+          [value] = "drinkName"
+          (keydown)="drinkHandler($event)"
           class="w-full bg-transparent border border-gray-700 rounded-full py-3 px-6 pr-12 focus:outline-none focus:border-gray-500"
         />
         <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2">
