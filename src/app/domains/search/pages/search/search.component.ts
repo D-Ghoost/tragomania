@@ -52,6 +52,23 @@ export class SearchComponent {
     drinkHandler( event : KeyboardEvent ) : void{
       const input = event.target as HTMLInputElement;
       this.drinkName = input.value;
+      this.cocktailService.getCocktailsForInput( `${this.drinkName}` )
+      .subscribe({
+        next : (data : { drinks : Cocktail[] }) => {
+          console.log(data.drinks);
+          
+          if ( Array.isArray(data.drinks) ) {
+            this.cocktail.set(data.drinks);
+          } else {
+            this.cocktail.set([]);
+          }
+          console.log(Array.isArray(data.drinks));
+          console.log(this.cocktail);
+        },
+        error : (err : Error) => {
+          console.error(err);
+        }
+      })
     }
 
     ngOnDestroy() : void{

@@ -26,4 +26,11 @@ export class CocktailService {
     return this.http.get<{ drinks : Cocktail[] }>(`${this.API_URL}/filter.php?${query}`);
   }
 
+  getCocktailsForInput( text : string = '' ){
+    if( !text ){
+      return of({ drinks : [] });
+    }
+    return this.http.get<{ drinks : Cocktail[] }>(`${this.API_URL}/search.php?s=${text}`);
+  }
+
 }
