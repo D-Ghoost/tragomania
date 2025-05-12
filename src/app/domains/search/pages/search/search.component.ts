@@ -1,25 +1,34 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LucideAngularModule, Search } from 'lucide-angular';
 import { CocktailService } from '../../../shared/services/cocktail.service';
 import { Cocktail } from '../../../shared/models/cocktail.model';
 import { CocktailComponent } from "../../../cocktails/components/cocktail/cocktail.component";
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, LucideAngularModule, CocktailComponent],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    CocktailComponent
+  ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
   
-    readonly Search = Search;
     drinkName : string = ''; 
-
     cocktail = signal<Cocktail[]>([]);
+    searchControl = new FormControl('',{
+      nonNullable: true,
+      validators:[
+        Validators.required
+      ]
+    });
     queryToLink : string | null = null;
+
     private routeSubscription : Subscription | null = null;
     private cocktelSubscription : Subscription | null = null;
     private cocktailService = inject(CocktailService);
@@ -49,9 +58,12 @@ export class SearchComponent {
 
     }
 
-    drinkHandler( event : KeyboardEvent ) : void{
-      const input = event.target as HTMLInputElement;
-      this.drinkName = input.value;
+    drinkHandler() : void{
+      
+      if( this.searchControl.invalid ) {
+        return;
+      }
+      this.drinkName = this.searchControl.value;
       this.cocktailService.getCocktailsForInput( `${this.drinkName}` )
       .subscribe({
         next : (data : { drinks : Cocktail[] }) => {
@@ -71,10 +83,8 @@ export class SearchComponent {
       })
     }
 
-    ngOnDestroy() : void{
-      if (this.routeSubscription || this.cocktelSubscription) {
-        this.routeSubscription?.unsubscribe();
-        this.cocktelSubscription?.unsubscribe();
-      }
+    ngOnDestroy(): void {
+      this.routeSubscription?.unsubscribe();
+      this.cocktelSubscription?.unsubscribe();
     }
 }
