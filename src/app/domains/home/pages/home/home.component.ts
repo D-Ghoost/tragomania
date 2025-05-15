@@ -22,7 +22,7 @@ export class HomeComponent {
     readonly Martini = Martini;
     readonly Beer = Beer;
     readonly WineOff = WineOff;
-
+    
     cocktail = signal<Cocktail[]>([]);
     private cocktailSubscribe : Subscription | null = null;
     private cocktailService = inject(CocktailService);

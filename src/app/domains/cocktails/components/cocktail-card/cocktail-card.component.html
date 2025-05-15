@@ -1,6 +1,7 @@
 <li
     class="border  border-gray-600 rounded-3xl flex flex-col items-center hover:border-white transition-colors"
     [ngClass]="additionalClass"
+    (click)="cocktailDetails(idDrink)"
 >
     <div class="relative aspect-square flex items-center justify-center text-gray-500 uppercase font-bold">
         <img [src]="imgUrl" [alt]="alt">
