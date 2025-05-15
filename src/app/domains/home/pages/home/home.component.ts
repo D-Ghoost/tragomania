@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Martini, Beer, WineOff } from 'lucide-angular';
-import { CocktailComponent } from '../../../cocktails/components/cocktail/cocktail.component';
+import { CocktailCardComponent } from '../../../cocktails/components/cocktail-card/cocktail-card.component';
 import { Cocktail } from '../../../shared/models/cocktail.model';
 import { CocktailService } from '../../../shared/services/cocktail.service';
 import { Subscribable, Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { Subscribable, Subscription } from 'rxjs';
   imports: [
     CommonModule, 
     LucideAngularModule, 
-    CocktailComponent,
+    CocktailCardComponent,
     RouterLink
   ],
   templateUrl: './home.component.html',

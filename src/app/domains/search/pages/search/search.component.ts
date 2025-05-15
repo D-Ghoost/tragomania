@@ -5,14 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CocktailService } from '../../../shared/services/cocktail.service';
 import { Cocktail } from '../../../shared/models/cocktail.model';
-import { CocktailComponent } from "../../../cocktails/components/cocktail/cocktail.component";
+import { CocktailCardComponent } from "../../../cocktails/components/cocktail-card/cocktail-card.component";
 
 @Component({
   selector: 'app-search',
   imports: [
     CommonModule, 
     ReactiveFormsModule,
-    CocktailComponent
+    CocktailCardComponent
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'

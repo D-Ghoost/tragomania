@@ -4,10 +4,9 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-cocktail',
   imports: [CommonModule],
-  templateUrl: './cocktail.component.html',
-  styleUrl: './cocktail.component.css'
+  templateUrl: './cocktail-card.component.html'
 })
-export class CocktailComponent {
+export class CocktailCardComponent {
   @Input() name : string = '';
   @Input() imgUrl : string = '';
   @Input() alt : string = `Image to ${this.name}`;
