@@ -1,20 +1,53 @@
 # 🥂 TRAGOMANIA — Explorador de Cócteles
 
-**TRAGOMANIA** es una aplicación Angular que permite descubrir y buscar bebidas por categoría, nombre o ingrediente. Diseñada con una interfaz moderna y dinámica, ofrece una experiencia visual envolvente y fácil de usar.
+**TRAGOMANIA** es una aplicación web desarrollada en Angular que permite descubrir, buscar y explorar cócteles de manera visual e interactiva. El usuario puede buscar bebidas por nombre, ingrediente o categoría, visualizar detalles, ingredientes y preparaciones, todo en una interfaz moderna y responsiva.
 
 ---
 
-## 🚀 Características
+## 🚀 ¿Qué hace este aplicativo?
 
-- 🔍 Búsqueda por nombre o ingredientes.
-- 📂 Filtros por categorías populares: Cocktails, Ordinary Drinks y Non-Alcoholic.
-- 🖼️ Visualización responsiva con imágenes.
-- ⚙️ Conexión con API externa mediante un servicio modular.
-- 💡 Uso de signals para manejo eficiente del estado.
+- Permite buscar cócteles por nombre o ingredientes.
+- Filtra bebidas por categorías populares: Cocktails, Ordinary Drinks y Non-Alcoholic.
+- Muestra imágenes y detalles de cada cóctel, incluyendo ingredientes y medidas.
+- Presenta instrucciones claras para la preparación de cada bebida.
+- Ofrece una experiencia de usuario ágil y visualmente atractiva.
 
 ---
 
-## 📦 Instalación
+## 🛠️ Tecnologías Utilizadas
+
+- **Angular 15+** — Framework principal para la construcción de la SPA.
+- **TypeScript** — Lenguaje principal para el desarrollo frontend.
+- **Tailwind CSS** — Utilizado para el diseño responsivo y moderno de la interfaz.
+- **Bun** — Gestor de paquetes y scripts para desarrollo y ejecución.
+- **Signals de Angular** — Para manejo eficiente y reactivo del estado.
+
+---
+
+## 🔗 API Externa
+
+Este proyecto utiliza la API pública de [TheCocktailDB](https://www.thecocktaildb.com/api.php) para obtener información, imágenes y detalles de los cócteles.
+
+Ejemplo de endpoint utilizado:
+
+```
+https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail
+```
+
+Créditos y agradecimientos a [TheCocktailDB](https://www.thecocktaildb.com/) por proveer la información y recursos visuales.
+
+---
+
+## ✅ Requisitos para ejecutar el proyecto
+
+- Node.js 16 o superior
+- Angular CLI 15 o superior
+- Bun instalado
+- Conexión a Internet
+
+---
+
+## 📦 Instalación y ejecución
 
 1. Clona el repositorio:
 
@@ -36,71 +69,6 @@ bun run start
 ```
 
 Luego, abre `http://localhost:4200` en tu navegador.
-
----
-
-## 🧪 Pruebas
-
-Para ejecutar los tests unitarios:
-
-```bash
-bun run test
-```
-
----
-
-## 🧠 Justificación Técnica
-
-- **Modularidad**: Separación clara entre componentes (`Home`, `Search`) y servicios.
-- **Signals**: Se usa `signal<Cocktail[]>` para una gestión más eficiente del estado reactivo.
-- **Reutilización**: Componente `<app-cocktail>` usado tanto en Home como en Search.
-- **Tailwind CSS**: Facilita un diseño limpio y adaptativo.
-- **Inyección moderna**: Uso de `inject()` en lugar del constructor para servicios.
-
----
-
-## 🗂️ Estructura de Carpetas (Extracto)
-
-```
-src/
-├── app/
-│   ├── home/
-│   ├── search/
-│   └── shared/
-│       ├── models/
-│       └── services/
-```
-
----
-
-## 🧾 Modelo de Datos
-
-```ts
-export interface Cocktail {
-  idDrink: string;
-  strDrink: string;
-  strDrinkThumb: string;
-  [key: string]: string | null;
-}
-```
-
----
-
-## 🔗 API Referenciada
-
-Se utiliza la API pública de [TheCocktailDB](https://www.thecocktaildb.com/api.php), por ejemplo:
-
-```
-https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail
-```
-
----
-
-## ✅ Requisitos
-
-- Node.js 16+
-- Angular CLI 15+
-- Conexión a Internet
 
 ---
 
